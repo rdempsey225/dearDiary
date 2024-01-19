@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TodayEntry
+{% endblock %}
+
+{% block main %}
+<div class ="container" style="margin-top:-5%">
+    <form action="/entry" method="post" style="margin-top: 10%;">
+        <input type="hidden" name="idedit" value={{idedit}} id="idedit">
+        <div class="mb-3">
+ <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="entrydate" type="date" id="entrydate" value={{entrydate}}>
+        </div>
+        <div class="mb-3" >
+            <label for="entry1" class="form-label"> Tell me about your day </label>
+  <textarea class="form-control mx-auto w-50dmv journal-input" id="entry1" name="entry1" rows="3" style="color:green" placeholder="Dear Diary, You'll never believe what happened..." value={{entry}}>{{dentry}}</textarea>
+            </div>
+        <button class="btn btn-primary" type="submit">Log Journal Entry</button>
+    </form>
+</div>
+
+<script>
+    const vard = document.querySelector('entrydate')
+    console.log("query",vard);
+  </script>
+{% endblock %}

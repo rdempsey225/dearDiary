@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+
+{% block title %}
+HZTimeline
+{% endblock %}
+
+{% block main %}
+<div class="modal .modal-sm" tabindex="-1" id="myModal" data-bs-backdrop="static" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">What would you like to do?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+      <div class="modal-body">
+        <h5>Select an option below.</h5>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/history" method="get" class="mt-0">
+                  <div class="mb-1"><input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="historymodal" id="historymodal" type="hidden" value=></div>
+                  <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">See Entries</button>
+                </form>
+                <form action="/entry" method="get">
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >
+                      <div class="mb-3">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="entrydate" type="date" id="entrydate" value=>
+                      </div>Journal Entry
+                    </button>
+                  </form>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--place modal above this line-->
+<div class = container>
+  <div class="h3" style="color: yellow">&#8645;</div>
+  <h3 style="color: yellow; font-family:Cursive">Scroll Down to Start..Up to Reverse &#8645;</h3>
+</h2>
+</div>
+      <div class="top">
+          <h1 class="h1">Dear Diary</h1>
+          <div class="box-3">Select a Month to see or enter a journal entry</div>
+            <div class="boxes">
+              <div class="box-2 2024 blue">2024
+                </div>
+              <div class="box-2 2023 red">2023</div>
+              <div class="box-2 2022 green">2022</div>
+              <div class="box-2 2021 purple">2021</div>
+            </div>
+        </div>
+        <div class="top">
+        <div class="boxes">
+        <div class="bottom" id='2024'>
+        <!--2024 bottom boxes"-->
+          <div class="box-1 blue">Jan</div>
+          <div class="box-1  red">Feb</div>
+          <div class="box-1  green">Mar</div>
+          <div class="box-1  purple">Apr</div>
+          <div class="box-1 blue">May</div>
+          <div class="box-1  red">Jun</div>
+          <div class="box-1  green">Jul</div>
+          <div class="box-1  purple">Aug</div>
+          <div class="box-1  blue">Sep</div>
+          <div class="box-1 red">Oct</div>
+          <div class="box-1 green">Nov</div>
+          <div class="box-1 purple">Dec</div>
+        </div>
+  <!--2023 bottom boxes"-->
+     <div class="bottom" id='2023' >
+      <div class="box-1 blue">Jan</div>
+      <div class="box-1 red">Feb</div>
+      <div class="box-1 green">Mar</div>
+      <div class="box-1 purple">Apr</div>
+      <div class="box-1 blue">May</div>
+      <div class="box-1 red">Jun</div>
+      <div class="box-1 green">Jul</div>
+      <div class="box-1 purple">Aug</div>
+      <div class="box-1 blue">Sep</div>
+      <div class="box-1 red">Oct</div>
+      <div class="box-1 green">Nov</div>
+      <div class="box-1 purple">Dec</div>
+    </div>
+    <!--2022 months-->
+    <div class="bottom" id='2022' >
+        <div class="box-1 blue">Jan</div>
+        <div class="box-1 red">Feb</div>
+        <div class="box-1 green">Mar</div>
+        <div class="box-1 purple">Apr</div>
+        <div class="box-1 blue">May</div>
+        <div class="box-1 red">Jun</div>
+        <div class="box-1 green">Jul</div>
+        <div class="box-1 purple">Aug</div>
+        <div class="box-1 blue">Sep</div>
+        <div class="box-1 red">Oct</div>
+        <div class="box-1 green">Nov</div>
+        <div class="box-1 purple">Dec</div>
+      </div>
+      <!--2022 months-->
+    <div class="bottom" id ='2022' >
+      <div class="box-1 blue">Jan</div>
+      <div class="box-1 red">Feb</div>
+      <div class="box-1 green">Mar</div>
+      <div class="box-1 purple">Apr</div>
+      <div class="box-1 blue">May</div>
+      <div class="box-1 red">Jun</div>
+      <div class="box-1 green">Jul</div>
+      <div class="box-1 purple">Aug</div>
+      <div class="box-1 blue">Sep</div>
+      <div class="box-1 red">Oct</div>
+      <div class="box-1 green">Nov</div>
+      <div class="box-1 purple">Dec</div>
+    </div>
+    </div>
+  </div>
+</div>
+<!--scripts for hover-->
+<script>
+  //hover and click controls for month boxes
+  var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+  var boxmouse = document.getElementsByClassName("box-1");
+  for(var i =0;i<boxmouse.length;i++){
+    boxmouse[i].addEventListener('mouseover', function(e){
+      console.log("this is e", e);
+      console.log("this is this", this);
+      varinner=this.innerHTML;
+      console.log("this is this inner", this.innerHTML);
+      varparent=this.parentNode.id
+      console.log("this is this parent", this.parentNode.id);
+      console.log("this is boxmousehover", boxmouse);
+      console.log("this is boxmousehoveri", boxmouse[i]);
+
+      this.style.borderColor = "red";
+      this.style.position = "start";
+    });
+  };
+
+  for(var i =0;i<boxmouse.length;i++){
+    boxmouse[i].addEventListener('mouseout', function(e){
+      console.log("this is e2", e);
+      console.log("this is this2", this);
+      console.log("this is boxmouseout", boxmouse);
+      console.log("this is boxmouseouti2", boxmouse[i]);
+
+      this.style.borderColor = "silver";
+      this.style.opacity = "1";
+    });
+  };
+
+  for(var i =0;i<boxmouse.length;i++){
+    boxmouse[i].addEventListener('click', function(e){
+      console.log("this is e", e);
+      console.log("this is this", this);
+      varinner=this.innerHTML;
+      console.log("this is this inner", this.innerHTML);
+      varparent=this.parentNode.id
+      console.log("this is this parent", this.parentNode.id);
+      console.log("this is boxclick", boxmouse);
+      console.log("this is boxclicki", boxmouse[i]);
+
+      myModal.toggle();
+      modaldateinput=document.getElementById('entrydate');
+      modalinput=document.getElementById('historymodal');
+      console.log("modal input", modalinput)
+      console.log("myModalbutton", document.getElementById('historymodal'));
+      defaultdate = monthdayyr(varinner,varparent);
+      console.log("date i got",defaultdate);
+      modalinput.value=defaultdate;
+      modaldateinput.value=defaultdate;
+    });
+  };
+
+  </script>
+  <!--GSAP Scroll Trigger scripts-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="/static/timeline.js"></script>
+
+{% endblock %}
+

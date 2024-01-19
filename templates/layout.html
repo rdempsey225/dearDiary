@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+         <!-- http://getbootstrap.com/docs/5.3/ -->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+         <!--import css from static folder-->
+         <link href="/static/styles.css" rel="stylesheet">
+         <!--import google fonts for journal entry-->
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+ <title> hello {% block title %}{% endblock %}</title>
+    </head>
+    <body class="body">
+        <nav class="bg-light fixed-top border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><span style="font-family:Cursive">Dear Diary</span></a>
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    {% if session["user_id"] %}
+                        <ul class="navbar-nav me-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" style="font-family:Cursive"href="/entry">Log Today's Entry</a></li>
+                            <li class="nav-item"><a class="nav-link" style="font-family:Cursive"href="/scrollmy">Scroll Through Entries</a></li>
+                            <li class="nav-item"><a class="nav-link" style="font-family:Cursive"href="/history">Entry List</a></li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" style="font-family:Cursive"href="/logout">Log Out</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" style="font-family:Cursive" href="/register">Create Free Account</a></li>
+                            <li class="nav-item"><a class="nav-link" style="font-family:Cursive" href="/login">Log In</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        <main class="container-fluid py-5">
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+    <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="/static/timeline.js"></scrip-->
+</html>

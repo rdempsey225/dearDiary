@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Scrollmy
+{% endblock %}
+
+{% block main %}
+<div class="panel mt-1">
+  <div class="h3" style="color: yellow">&#8645;</div>
+  <div class="h3" style="color: yellow; font-family:Cursive">Scroll down to reveal entries...Up to Reverse! </div>
+
+  {% for entry in entries %}
+  <div class = "box-4">
+    <div>{{entry.date|datefixer}}</div>
+    <div class=button><form action="/entry" method="get" class = "mt-5">
+      <div class="mb-3">
+          <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="entryid" type="hidden" value={{entry.id}}>
+      </div>
+      <button class="btn btn-primary" type="submit">Edit</button>
+  </form></div>
+    {{entry.jentry}}
+  </div>
+  {% endfor %}
+  </div>
+
+</script>
+<!--GSAP Scroll Trigger scripts-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script src="/static/timeline.js"></script>
+{% endblock %}
+
+
