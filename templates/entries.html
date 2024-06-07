@@ -20,7 +20,7 @@
                         {% for entry in entries %}
                                 <tr>
                                 <td>{{entry.date | datefixer }}</td>
-                                <td class="entries">{{entry.jentry}}</td>
+                                <td class="entries">{{entry.entry}}</td>
                                 <td> <form action="/entry" method="get" class = "mt-5">
                                     <div class="mb-3">
                                         <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="entryid" type="hidden" value={{entry.id}}>
