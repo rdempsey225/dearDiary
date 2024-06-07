@@ -1,9 +1,10 @@
 import datetime
 import requests
+import flask
+import inspect
+from flask import redirect, render_template, session
 from datetime import date
 from datetime import datetime
-
-from flask import redirect, render_template, session
 from functools import wraps
 
 def apology(message, code):
@@ -53,3 +54,6 @@ def datefixer(value):
     yr = stringdate.strftime('%Y')
 
     return f"{monthname+' '+day+','+' '+yr}"
+
+def get_line_number():
+    return inspect.currentframe().f_back.f_lineno
